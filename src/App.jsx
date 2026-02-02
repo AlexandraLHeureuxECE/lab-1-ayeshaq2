@@ -255,6 +255,9 @@ export default function App() {
           <div className="status" role="status" aria-live="polite">
             {status}
           </div>
+          <div className="keyboard-help" aria-live="polite">
+            Use arrow keys to move, Enter/Space to place, Home/End to jump.
+          </div>
           <div
             className="board"
             role="grid"

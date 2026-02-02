@@ -154,6 +154,12 @@ body {
   font-weight: 600;
 }
 
+.keyboard-help {
+  font-size: 0.9rem;
+  color: #cbd5f5;
+  opacity: 0.85;
+}
+
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
