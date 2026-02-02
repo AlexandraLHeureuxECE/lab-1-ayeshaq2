@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background:
+    repeating-radial-gradient(circle at top, rgba(248, 250, 252, 0.08) 0 1px, transparent 1px 32px),
+    repeating-conic-gradient(from 0deg, rgba(248, 250, 252, 0.04) 0 12deg, transparent 12deg 24deg),
+    radial-gradient(circle at top, #1e3a8a 0%, #0b1120 55%, #020617 100%);
+  color: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.app {
+  width: min(480px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.header p {
+  margin: 0.25rem 0 0;
+  color: #94a3b8;
+}
+
+.game {
+  background: linear-gradient(145deg, #0f172a, #0b1120);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card {
+  background: linear-gradient(145deg, #0f172a, #0b1120);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 24px 60px rgba(2, 6, 23, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card h2 {
+  margin: 0;
+}
+
+.card p {
+  margin: 0;
+  color: #cbd5f5;
+}
+
+.start-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.names-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.name-editor {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.25s ease, opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.name-editor.open {
+  max-height: 260px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.names-form label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.names-form input {
+  border-radius: 12px;
+  border: 1px solid #1e3a8a;
+  background: #0b1120;
+  color: #f8fafc;
+  padding: 0.6rem 0.75rem;
+  font-size: 1rem;
+}
+
+.names-form input:focus {
+  outline: 2px solid #ef4444;
+  outline-offset: 2px;
+}
+
+.players {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.players strong {
+  color: #e2e8f0;
+}
+
+.game-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.status {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.square {
+  height: 110px;
+  width: 100%;
+  border: 2px solid #1e3a8a;
+  border-radius: 16px;
+  background: #0b1120;
+  color: #f8fafc;
+  font-size: 2.5rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.square:hover:not(:disabled) {
+  background: #111827;
+  border-color: #ef4444;
+  transform: translateY(-2px);
+}
+
+.square:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.square:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.square.highlight {
+  background: #ef4444;
+  color: #0b1120;
+  border-color: #facc15;
+}
+
+.reset {
+  align-self: flex-start;
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #ef4444;
+  color: #0b1120;
+  cursor: pointer;
+}
+
+.primary,
+.secondary,
+.ghost {
+  border: none;
+  border-radius: 999px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary {
+  background: #ef4444;
+  color: #0b1120;
+}
+
+.primary:hover,
+.reset:hover {
+  background: #f97316;
+}
+
+.secondary {
+  background: #1e3a8a;
+  color: #f8fafc;
+}
+
+.secondary:hover {
+  background: #1d4ed8;
+}
+
+.ghost {
+  background: transparent;
+  color: #cbd5f5;
+  border: 1px solid #1e3a8a;
+}
+
+.ghost:hover {
+  color: #f8fafc;
+  border-color: #ef4444;
+}
+
+.reset:hover {
+  background: #0ea5e9;
+}
+
+@media (max-width: 480px) {
+  .game {
+    padding: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .square {
+    height: 90px;
+    font-size: 2.2rem;
+  }
+}
