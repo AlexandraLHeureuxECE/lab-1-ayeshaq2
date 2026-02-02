@@ -178,7 +178,7 @@ export default function App() {
   }, [isStarted, selectedIndex, board, winner, nextPlayer]);
 
   return (
-    <div className="app">
+    <div className={`app${isStarted ? "" : " start-view"}`}>
       <header className="header">
         <h1>Tic-Tac-Toe</h1>
         <p>2 players on the same device</p>
